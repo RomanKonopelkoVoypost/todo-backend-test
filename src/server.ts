@@ -2,6 +2,7 @@ import express from 'express'
 import cors from 'cors'
 import { env } from './config/env'
 import { syncDatabase } from './models'
+import apiRoutes from './routes'
 
 const app = express()
 
@@ -13,9 +14,12 @@ app.use(express.urlencoded({ extended: true }))
 // Initialize database connection
 syncDatabase()
 
-// Basic route for testing
-app.get('/', (req, res) => {
-  res.json({ message: 'Todo API is running' })
+// API Routes
+app.use('/api', apiRoutes)
+
+// Health check
+app.get('/health', (req, res) => {
+  res.json({ status: 'healthy' })
 })
 
 // Start server

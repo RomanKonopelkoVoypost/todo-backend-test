@@ -5,7 +5,6 @@ const models = {
   Todo,
 }
 
-// Sync all models with database
 const syncDatabase = async () => {
   try {
     await sequelize.sync({ alter: process.env.NODE_ENV === 'development' })

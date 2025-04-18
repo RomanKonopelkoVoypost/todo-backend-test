@@ -4,7 +4,7 @@ import { env } from './config/env'
 import { syncDatabase } from './models'
 import apiRoutes from './routes'
 
-const app = express()
+export const app = express()
 
 // Middleware
 app.use(cors())
@@ -18,11 +18,13 @@ syncDatabase()
 app.use('/api', apiRoutes)
 
 // Health check
-app.get('/health', (req, res) => {
+app.get('/health', (_req, res) => {
   res.json({ status: 'healthy' })
 })
 
 // Start server
-app.listen(env.PORT, () => {
-  console.log(`Server is running on port ${env.PORT}`)
-})
+if (process.env.NODE_ENV !== 'test') {
+  app.listen(env.PORT, () => {
+    console.log(`Server is running on port ${env.PORT}`)
+  })
+}

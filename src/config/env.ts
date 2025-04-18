@@ -11,8 +11,6 @@ const envSchema = z.object({
 
 type Env = z.infer<typeof envSchema>
 
-console.log(process.env)
-
 const env = envSchema.parse(process.env)
 
 export { env, type Env }

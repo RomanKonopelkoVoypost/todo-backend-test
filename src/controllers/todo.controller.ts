@@ -3,7 +3,7 @@ import { TodoService } from '../services/todo.service'
 import { ErrorHandler } from '../utils/errorHandler'
 
 export class TodoController {
-  static async getAll(req: Request, res: Response): Promise<void> {
+  static async getAll(_req: Request, res: Response): Promise<void> {
     try {
       const todos = await TodoService.getAll()
       res.json(todos)

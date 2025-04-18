@@ -3,7 +3,7 @@ import v1Routes from './v1'
 
 const router = Router()
 
-router.get('/', (req, res) => {
+router.get('/', (_req, res) => {
   res.json({
     name: 'Todo API',
     versions: {
@@ -12,7 +12,6 @@ router.get('/', (req, res) => {
   })
 })
 
-// Versioned routes
 router.use('/v1', v1Routes)
 
 export default router

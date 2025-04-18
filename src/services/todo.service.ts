@@ -1,6 +1,12 @@
 import Todo from '../models/todo.model'
 import { CreationAttributes } from 'sequelize'
 
+interface CreateTodoData {
+  title: string
+  description?: string
+  completed?: boolean
+}
+
 interface UpdateTodoData {
   title?: string
   description?: string
@@ -16,8 +22,8 @@ export class TodoService {
     return Todo.findByPk(id)
   }
 
-  static async create(data: CreationAttributes<Todo>) {
-    return Todo.create(data)
+  static async create(data: CreateTodoData) {
+    return Todo.create(data as CreationAttributes<Todo>)
   }
 
   static async update(id: number, data: UpdateTodoData) {

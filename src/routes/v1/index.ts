@@ -3,8 +3,7 @@ import { TodoController } from '../../controllers/todo.controller'
 
 const router = Router()
 
-// API Documentation
-router.get('/', (req, res) => {
+router.get('/', (_req, res) => {
   res.json({
     version: 'v1',
     documentation: '/api/v1/docs',

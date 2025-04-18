@@ -31,15 +31,22 @@ export class ErrorHandler {
     })
   }
 
-  static notFound(message: string = 'Resource not found'): ApiError {
-    return new ApiError(404, message)
+  static notFound(message: string, res: Response): void {
+    res.status(404).json({
+      error: message || 'Resource not found',
+    })
   }
 
-  static badRequest(message: string, details?: any): ApiError {
-    return new ApiError(400, message, details)
+  static badRequest(message: string, res: Response, details?: any): void {
+    res.status(400).json({
+      error: message,
+      details,
+    })
   }
 
-  static internal(message: string = 'Internal server error'): ApiError {
-    return new ApiError(500, message)
+  static internal(message: string, res: Response): void {
+    res.status(500).json({
+      error: message || 'Internal server error',
+    })
   }
 }

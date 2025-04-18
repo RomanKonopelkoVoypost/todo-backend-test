@@ -59,6 +59,7 @@ describe('TodoService', () => {
       const todoData = {
         title: 'New Todo',
         description: 'New Description',
+        completed: false,
       }
       const mockTodo = {
         id: 1,
